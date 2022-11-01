@@ -9,11 +9,13 @@ async function buildBundle(input) {
     try {
         const files = await readdir(input, { withFileTypes: true });
         files.forEach(function (file) {
-            if (file.isFile() && (path.extname(path.join(input, file.name)) == '.css' )) {
-            const inputStream = fs.createReadStream(path.join(input, file.name), 'utf-8');
-                inputStream.on('data', (chunk) => {
-                    buildStream.write(chunk);
-                });
+            if (file.isFile()) { 
+                if (path.extname(path.join(input, file.name)) == '.css') {
+                const inputStream = fs.createReadStream(path.join(input, file.name), 'utf-8');
+                    inputStream.on('data', (chunk) => {
+                        buildStream.write(chunk);
+                    });
+                }
             }
         });
     } 
