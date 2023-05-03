@@ -10,7 +10,7 @@ fs.mkdir(path.join(__dirname, "project-dist"), {
 
 function buildAssets(origDir, buildDir) {
     fs.mkdir(buildDir, {
-            recursive: false
+            recursive: true
         },
         (err) => {
             if (err) console.log(err);
